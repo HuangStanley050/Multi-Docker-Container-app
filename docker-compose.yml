@@ -1,0 +1,13 @@
+version: "3"
+services:
+  postgres:
+    image: "postgres:alpine"
+  redis:
+    image: "redis"
+  server:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./server
+    volumes:
+      - /app/node_modules
+      - ./server:/app
