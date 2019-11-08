@@ -10,7 +10,7 @@ services:
   postgres:
     image: "postgres:alpine"
   redis:
-    image: "redis"
+    image: "redis:latest"
   api:
     build:
       dockerfile: Dockerfile.dev
@@ -40,3 +40,6 @@ services:
     volumes:
       - /app/node_modules
       - ./worker:/app
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
