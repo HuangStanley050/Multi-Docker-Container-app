@@ -1,5 +1,4 @@
 import React from "react";
-
 import Fibs from "./Fib";
 import OtherPage from "./OtherPage";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";

@@ -1,0 +1,15 @@
+sudo: required
+services:
+  - docker
+before_install:
+  - docker build -t stanley/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run stanley/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t stanley/complex-express-react-redis-postgres-client ./client
+  - docker build -t stanley/complex-express-react-redis-postgres-server ./server
+  - docker build -t stanley/complex-express-react-redis-postgres-worker ./worker
+  - docker build -t stanley/complex-express-react-redis-postgres-nginx ./nginx
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
