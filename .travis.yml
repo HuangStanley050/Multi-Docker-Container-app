@@ -13,3 +13,7 @@ after_success:
   - docker build -t stanley/complex-express-react-redis-postgres-worker ./worker
   - docker build -t stanley/complex-express-react-redis-postgres-nginx ./nginx
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push stanley/complex-express-react-redis-postgres-client
+  - docker push stanley/complex-express-react-redis-postgres-server
+  - docker push stanley/complex-express-react-redis-postgres-worker
+  - docker push stanley/complex-express-react-redis-postgres-nginx
